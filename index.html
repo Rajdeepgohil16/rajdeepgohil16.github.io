@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rajdeepsinh Gohil | Data Analyst Portfolio</title>
+<meta name="description" content="Rajdeepsinh Gohil's data analytics portfolio featuring Python, SQL, PostgreSQL, Power BI, Tableau, machine learning, healthcare analytics, and BI projects.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:    #0f2244;
+  --navy2:   #1a3a6b;
+  --teal:    #0ea5e9;
+  --teal-l:  #e0f2fe;
+  --teal-d:  #0369a1;
+  --white:   #ffffff;
+  --off:     #f8fafc;
+  --border:  #e2e8f0;
+  --text:    #1e293b;
+  --muted:   #64748b;
+  --light:   #94a3b8;
+  --card:    #ffffff;
+  --success: #059669;
+  --tag-bg:  #f1f5f9;
+  --tag-txt: #475569;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;color:var(--text);background:var(--white);line-height:1.6;font-size:16px}
+a{text-decoration:none;color:inherit}
+img{max-width:100%}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,0.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:0 2rem}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
+.nav-logo{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:800;color:var(--navy);letter-spacing:-0.02em}
+.nav-logo span{color:var(--teal)}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{font-size:0.85rem;font-weight:500;color:var(--muted);transition:color .2s;letter-spacing:0.01em}
+.nav-links a:hover{color:var(--navy)}
+.nav-btn{font-size:0.82rem;font-weight:600;background:var(--navy);color:#fff;padding:0.5rem 1.2rem;border-radius:6px;transition:background .2s}
+.nav-btn:hover{background:var(--navy2)}
+
+/* HERO */
+#hero{background:var(--off);padding:9rem 2rem 6rem;border-bottom:1px solid var(--border)}
+.hero-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 420px;gap:5rem;align-items:center}
+.hero-badge{display:inline-flex;align-items:center;gap:0.5rem;background:var(--teal-l);color:var(--teal-d);font-size:0.75rem;font-weight:600;padding:0.35rem 0.8rem;border-radius:999px;letter-spacing:0.04em;text-transform:uppercase;margin-bottom:1.5rem}
+.hero-badge::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--success)}
+h1{font-family:'Syne',sans-serif;font-size:clamp(2rem,4vw,3rem);font-weight:800;line-height:1.1;letter-spacing:-0.03em;color:var(--navy);margin-bottom:1.2rem}
+h1 em{color:var(--teal);font-style:normal}
+.hero-sub{font-size:1.05rem;color:var(--muted);line-height:1.8;max-width:520px;margin-bottom:2rem}
+.hero-sub strong{color:var(--text);font-weight:600}
+.hero-cta{display:flex;gap:0.8rem;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:0.4rem;font-size:0.85rem;font-weight:600;padding:0.7rem 1.5rem;border-radius:7px;transition:all .2s;letter-spacing:0.01em}
+.btn-primary{background:var(--navy);color:#fff}
+.btn-primary:hover{background:var(--navy2);transform:translateY(-1px)}
+.btn-secondary{background:#fff;color:var(--navy);border:1.5px solid var(--border)}
+.btn-secondary:hover{border-color:var(--navy);transform:translateY(-1px)}
+.btn-teal{background:var(--teal);color:#fff}
+.btn-teal:hover{background:var(--teal-d);transform:translateY(-1px)}
+
+/* STAT CARD */
+.stat-panel{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:2rem;box-shadow:0 4px 24px rgba(0,0,0,0.06)}
+.stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem}
+.stat-item{}
+.stat-val{font-family:'Syne',sans-serif;font-size:1.9rem;font-weight:800;color:var(--navy);line-height:1}
+.stat-val span{color:var(--teal)}
+.stat-lbl{font-size:0.75rem;color:var(--muted);font-weight:500;margin-top:0.2rem;text-transform:uppercase;letter-spacing:0.05em}
+.pill-row{display:flex;flex-wrap:wrap;gap:0.4rem;padding-top:1.5rem;border-top:1px solid var(--border)}
+.pill{font-size:0.72rem;font-weight:600;color:var(--teal-d);background:var(--teal-l);padding:0.25rem 0.7rem;border-radius:999px;letter-spacing:0.03em}
+
+/* SECTIONS */
+.section{padding:5rem 2rem}
+.section-inner{max-width:1100px;margin:0 auto}
+.section-alt{background:var(--off)}
+.label{font-size:0.72rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--teal);margin-bottom:0.5rem}
+h2{font-family:'Syne',sans-serif;font-size:clamp(1.6rem,3vw,2.1rem);font-weight:800;color:var(--navy);line-height:1.2;margin-bottom:2.5rem;letter-spacing:-0.02em}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+.about-text p{color:var(--muted);line-height:1.9;margin-bottom:1rem;font-size:0.97rem}
+.about-text p strong{color:var(--text);font-weight:600}
+.about-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.8rem}
+.about-card-title{font-size:0.78rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--teal);margin-bottom:1rem}
+.role-list{display:flex;flex-wrap:wrap;gap:0.5rem}
+.role-tag{font-size:0.8rem;font-weight:500;padding:0.35rem 0.75rem;border-radius:6px;background:var(--tag-bg);color:var(--tag-txt);border:1px solid var(--border)}
+
+/* SKILLS */
+.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+.skill-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.5rem;transition:border-color .2s,transform .2s}
+.skill-card:hover{border-color:var(--teal);transform:translateY(-2px)}
+.skill-icon{width:36px;height:36px;border-radius:8px;background:var(--teal-l);display:flex;align-items:center;justify-content:center;margin-bottom:1rem}
+.skill-icon svg{width:18px;height:18px;stroke:var(--teal-d);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.skill-title{font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--navy);margin-bottom:0.6rem}
+.skill-items{font-size:0.85rem;color:var(--muted);line-height:1.9}
+
+/* PROJECTS */
+.projects-list{display:flex;flex-direction:column;gap:1.8rem}
+.proj-card{background:var(--white);border:1px solid var(--border);border-radius:14px;overflow:hidden;display:grid;grid-template-columns:1fr 240px;transition:border-color .2s,transform .2s}
+.proj-card:hover{border-color:#94a3b8;transform:translateY(-2px);box-shadow:0 8px 32px rgba(0,0,0,0.07)}
+.proj-body{padding:2.2rem}
+.proj-meta{display:flex;align-items:center;gap:0.6rem;margin-bottom:1rem}
+.proj-num{font-size:0.7rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--light)}
+.proj-badge{font-size:0.7rem;font-weight:600;background:var(--teal-l);color:var(--teal-d);padding:0.15rem 0.6rem;border-radius:999px}
+.proj-title{font-family:'Syne',sans-serif;font-size:1.15rem;font-weight:800;color:var(--navy);margin-bottom:0.6rem;line-height:1.3}
+.proj-problem{font-size:0.88rem;color:var(--muted);line-height:1.75;margin-bottom:1.1rem}
+.proj-highlights{display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:1.2rem}
+.proj-hl{font-size:0.75rem;font-weight:600;color:var(--success);background:#f0fdf4;border:1px solid #bbf7d0;padding:0.2rem 0.65rem;border-radius:6px}
+.proj-stack{display:flex;flex-wrap:wrap;gap:0.4rem}
+.stack-chip{font-size:0.72rem;font-weight:500;color:var(--tag-txt);background:var(--tag-bg);border:1px solid var(--border);padding:0.2rem 0.6rem;border-radius:5px}
+.proj-side{background:var(--off);border-left:1px solid var(--border);padding:2.2rem;display:flex;flex-direction:column;justify-content:space-between}
+.proj-side-title{font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--light);margin-bottom:0.8rem}
+.proj-kpi{margin-bottom:1.5rem}
+.kpi-val{font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:800;color:var(--navy);line-height:1}
+.kpi-lbl{font-size:0.75rem;color:var(--muted);margin-top:0.15rem}
+.proj-link{display:inline-flex;align-items:center;gap:0.4rem;font-size:0.8rem;font-weight:600;color:var(--teal-d);border:1.5px solid var(--teal);padding:0.55rem 1rem;border-radius:7px;transition:all .2s}
+.proj-link:hover{background:var(--teal);color:#fff}
+.proj-link svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+/* EXPERIENCE */
+.exp-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:2.5rem}
+.exp-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1.5rem;flex-wrap:wrap;gap:1rem}
+.exp-title{font-family:'Syne',sans-serif;font-size:1.15rem;font-weight:800;color:var(--navy);margin-bottom:0.3rem}
+.exp-company{font-size:0.9rem;font-weight:600;color:var(--teal-d)}
+.exp-dates{font-size:0.82rem;color:var(--muted);font-weight:500;text-align:right}
+.exp-loc{font-size:0.78rem;color:var(--light);text-align:right;margin-top:0.15rem}
+.exp-bullets{list-style:none;display:flex;flex-direction:column;gap:0.65rem}
+.exp-bullets li{font-size:0.9rem;color:var(--muted);padding-left:1.3rem;position:relative;line-height:1.7}
+.exp-bullets li::before{content:'›';position:absolute;left:0;color:var(--teal);font-weight:700;font-size:1rem}
+
+/* EDUCATION */
+.edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.edu-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:2rem;transition:border-color .2s}
+.edu-card.featured{border-color:var(--teal);border-width:1.5px}
+.edu-tag{display:inline-block;font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;background:var(--navy);color:#fff;padding:0.2rem 0.6rem;border-radius:5px;margin-bottom:1rem}
+.edu-deg{font-family:'Syne',sans-serif;font-size:1rem;font-weight:800;color:var(--navy);line-height:1.35;margin-bottom:0.4rem}
+.edu-school{font-size:0.88rem;font-weight:600;color:var(--teal-d);margin-bottom:0.25rem}
+.edu-meta{font-size:0.8rem;color:var(--muted)}
+
+/* CONTACT */
+#contact{background:var(--navy);padding:5rem 2rem}
+.contact-inner{max-width:700px;margin:0 auto;text-align:center}
+.contact-inner .label{color:rgba(255,255,255,0.5)}
+.contact-inner h2{color:#fff;margin-bottom:1rem}
+.contact-sub{color:rgba(255,255,255,0.65);font-size:0.97rem;margin-bottom:2.5rem}
+.contact-links{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap}
+.c-link{display:inline-flex;align-items:center;gap:0.5rem;font-size:0.85rem;font-weight:600;padding:0.75rem 1.6rem;border-radius:8px;transition:all .2s}
+.c-link.primary{background:var(--teal);color:#fff}
+.c-link.primary:hover{background:#38bdf8}
+.c-link.ghost{border:1.5px solid rgba(255,255,255,0.25);color:rgba(255,255,255,0.75)}
+.c-link.ghost:hover{border-color:#fff;color:#fff}
+
+/* FOOTER */
+footer{background:var(--navy);border-top:1px solid rgba(255,255,255,0.1);padding:1.5rem 2rem}
+.footer-inner{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem}
+footer p{font-size:0.78rem;color:rgba(255,255,255,0.4)}
+footer a{color:rgba(255,255,255,0.5);font-size:0.78rem;transition:color .2s}
+footer a:hover{color:rgba(255,255,255,0.9)}
+
+/* RESUME SECTION */
+.resume-section{background:var(--teal-l);border:1.5px solid #bae6fd;border-radius:14px;padding:2.5rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;margin-top:3rem}
+.resume-text h3{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:800;color:var(--navy);margin-bottom:0.3rem}
+.resume-text p{font-size:0.88rem;color:var(--muted)}
+
+/* FADE */
+.fade{opacity:0;transform:translateY(20px);transition:opacity .55s ease, transform .55s ease}
+.fade.in{opacity:1;transform:translateY(0)}
+
+/* DIVIDER */
+.divider{height:1px;background:var(--border);max-width:1100px;margin:0 auto}
+
+/* RESPONSIVE */
+@media(max-width:960px){
+  .hero-inner{grid-template-columns:1fr}
+  .stat-panel{display:none}
+  .about-grid{grid-template-columns:1fr}
+  .skills-grid{grid-template-columns:1fr 1fr}
+  .proj-card{grid-template-columns:1fr}
+  .proj-side{border-left:none;border-top:1px solid var(--border)}
+  .edu-grid{grid-template-columns:1fr}
+}
+@media(max-width:640px){
+  nav .nav-links{display:none}
+  .skills-grid{grid-template-columns:1fr}
+  h1{font-size:2rem}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#hero" class="nav-logo">RG<span>.</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="Rajdeepsinh_Gohil_Data_Analyst_Resume.pdf" download class="btn nav-btn">Download Resume</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">Open to Data &amp; BI Analyst roles · Canada-wide &amp; Remote</div>
+      <h1>Turning complex data into<br><em>business-ready insights</em></h1>
+      <p class="hero-sub">
+        Data Analytics graduate with hands-on experience in <strong>Python, SQL, PostgreSQL, Power BI, and Tableau</strong>. I build end-to-end workflows from raw data and ETL pipelines to statistical models, machine learning forecasts, and executive dashboards. My background in <strong>financial services operations</strong> helps me connect technical analysis with real business decision-making.
+      </p>
+      <div class="hero-cta">
+        <a href="#projects" class="btn btn-primary">View Projects</a>
+        <a href="https://github.com/Rajdeepgohil16" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">GitHub ↗</a>
+        <a href="https://www.linkedin.com/in/rajdeep-gohil/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">LinkedIn ↗</a>
+        <a href="Rajdeepsinh_Gohil_Data_Analyst_Resume.pdf" download class="btn btn-teal">Download Resume</a>
+      </div>
+    </div>
+    <div class="stat-panel">
+      <div class="stat-grid">
+        <div class="stat-item">
+          <div class="stat-val">3<span>.</span>94</div>
+          <div class="stat-lbl">GPA / 4.0</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-val">3</div>
+          <div class="stat-lbl">End-to-End Projects</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-val">8.67<span>M</span></div>
+          <div class="stat-lbl">Records Processed</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-val">1.02<span>%</span></div>
+          <div class="stat-lbl">Forecast MAE</div>
+        </div>
+      </div>
+      <div class="pill-row">
+        <span class="pill">Python</span>
+        <span class="pill">SQL</span>
+        <span class="pill">Power BI</span>
+        <span class="pill">Tableau</span>
+        <span class="pill">XGBoost</span>
+        <span class="pill">PostgreSQL</span>
+        <span class="pill">LSTM</span>
+        <span class="pill">ETL</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="section">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-text fade">
+        <div class="label">About Me</div>
+        <h2>A little context<br>behind the work</h2>
+        <p>I'm a data analytics professional based in Windsor, Ontario, and open to analyst roles across <strong>Canada and remote</strong>. My background combines financial services operations experience with graduate-level training in data analytics, machine learning, business intelligence, and statistical analysis.</p>
+        <p>I enjoy building <strong>end-to-end analytical workflows</strong>: starting from messy raw data, working through cleaning, transformation, modeling, and validation, and finishing with a dashboard, report, or forecasting output that a business audience can use.</p>
+        <p>My portfolio projects focus on operational analytics, energy forecasting, and healthcare analytics. Together, they show my ability to work with large datasets, build SQL and Python workflows, design BI dashboards, run statistical analysis, and communicate results clearly.</p>
+      </div>
+      <div class="fade">
+        <div class="about-card" style="margin-bottom:1rem">
+          <div class="about-card-title">Target Roles</div>
+          <div class="role-list">
+            <span class="role-tag">Data Analyst</span>
+            <span class="role-tag">BI Analyst</span>
+            <span class="role-tag">Business Analyst</span>
+            <span class="role-tag">Reporting Analyst</span>
+            <span class="role-tag">Operations Analyst</span>
+            <span class="role-tag">Healthcare Data Analyst</span>
+            <span class="role-tag">Junior ML Analyst</span>
+          </div>
+        </div>
+        <div class="about-card">
+          <div class="about-card-title">At a glance</div>
+          <table style="width:100%;font-size:0.85rem;border-collapse:collapse">
+            <tr><td style="color:var(--muted);padding:0.4rem 0;border-bottom:1px solid var(--border)">Based in</td><td style="font-weight:500;text-align:right;border-bottom:1px solid var(--border);padding:0.4rem 0">Windsor, ON</td></tr>
+            <tr><td style="color:var(--muted);padding:0.4rem 0;border-bottom:1px solid var(--border)">Open to</td><td style="font-weight:500;text-align:right;border-bottom:1px solid var(--border);padding:0.4rem 0">Canada-wide &amp; Remote</td></tr>
+            <tr><td style="color:var(--muted);padding:0.4rem 0;border-bottom:1px solid var(--border)">Education</td><td style="font-weight:500;text-align:right;border-bottom:1px solid var(--border);padding:0.4rem 0">St. Clair College 2026</td></tr>
+            <tr><td style="color:var(--muted);padding:0.4rem 0;border-bottom:1px solid var(--border)">GPA</td><td style="font-weight:500;text-align:right;border-bottom:1px solid var(--border);padding:0.4rem 0">3.94 / 4.0</td></tr>
+            <tr><td style="color:var(--muted);padding:0.4rem 0">Experience</td><td style="font-weight:500;text-align:right;padding:0.4rem 0">Financial Services, 1 yr</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SKILLS -->
+<section id="skills" class="section section-alt">
+  <div class="section-inner">
+    <div class="label fade">Technical Skills</div>
+    <h2 class="fade">What I work with</h2>
+    <div class="skills-grid">
+
+      <div class="skill-card fade">
+        <div class="skill-icon">
+          <svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        </div>
+        <div class="skill-title">Programming & Data</div>
+        <div class="skill-items">Python · SQL · PostgreSQL</div>
+      </div>
+
+      <div class="skill-card fade">
+        <div class="skill-icon">
+          <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <div class="skill-title">BI & Visualization</div>
+        <div class="skill-items">Power BI · Tableau · Matplotlib · Excel</div>
+      </div>
+
+      <div class="skill-card fade">
+        <div class="skill-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        </div>
+        <div class="skill-title">Python Libraries</div>
+        <div class="skill-items">pandas · NumPy · scikit-learn · statsmodels · XGBoost · TensorFlow/Keras · Prophet</div>
+      </div>
+
+      <div class="skill-card fade">
+        <div class="skill-icon">
+          <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        </div>
+        <div class="skill-title">Machine Learning & Stats</div>
+        <div class="skill-items">ETL · Feature Engineering · Time-Series Forecasting · Hypothesis Testing · Regression Analysis</div>
+      </div>
+
+      <div class="skill-card fade">
+        <div class="skill-icon">
+          <svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+        </div>
+        <div class="skill-title">Databases & Tools</div>
+        <div class="skill-items">PostgreSQL · Git/GitHub · Jupyter Notebook · VS Code</div>
+      </div>
+
+      <div class="skill-card fade">
+        <div class="skill-icon">
+          <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <div class="skill-title">Domain Knowledge</div>
+        <div class="skill-items">Financial Services · Auto Finance · Mortgage Servicing · Bankruptcy Operations · Consumer Complaints · Healthcare Analytics</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PROJECTS -->
+<section id="projects" class="section">
+  <div class="section-inner">
+    <div class="label fade">Portfolio</div>
+    <h2 class="fade">Featured Projects</h2>
+    <div class="projects-list">
+
+      <!-- PROJECT 1: CFPB -->
+      <div class="proj-card fade">
+        <div class="proj-body">
+          <div class="proj-meta">
+            <span class="proj-num">Project 01</span>
+            <span class="proj-badge">BI · Operations Analytics</span>
+          </div>
+          <div class="proj-title">CFPB Complaint Operations Analysis</div>
+          <p class="proj-problem">Complaint operations teams need to understand not only where complaint volume is highest, but where risk and workload signals are unevenly distributed. This project processes 8.67M public CFPB complaint records using a Python ETL pipeline, PostgreSQL data model, SQL validation layer, and Power BI executive dashboard to identify complaint volume, untimely response risk, and operational burden patterns across Credit Reporting, Debt Collection, Checking/Savings, and Mortgage.</p>
+          <div class="proj-highlights">
+            <span class="proj-hl">8.67M records processed</span>
+            <span class="proj-hl">PostgreSQL schema + validation layer</span>
+            <span class="proj-hl">2-page Power BI exec dashboard</span>
+            <span class="proj-hl">Effort-proxy KPI engineered</span>
+          </div>
+          <div class="proj-stack">
+            <span class="stack-chip">Python</span>
+            <span class="stack-chip">PostgreSQL</span>
+            <span class="stack-chip">Power BI</span>
+            <span class="stack-chip">ETL Pipeline</span>
+            <span class="stack-chip">pandas</span>
+            <span class="stack-chip">SQL</span>
+            <span class="stack-chip">NumPy</span>
+          </div>
+        </div>
+        <div class="proj-side">
+          <div>
+            <div class="proj-side-title">Key Result</div>
+            <div class="proj-kpi">
+              <div class="kpi-val">8.67M</div>
+              <div class="kpi-lbl">Complaint records processed</div>
+            </div>
+            <div class="proj-kpi">
+              <div class="kpi-val">99.75%</div>
+              <div class="kpi-lbl">Timely response rate identified</div>
+            </div>
+          </div>
+          <a href="https://github.com/Rajdeepgohil16/cfpb-complaint-operations-analysis" target="_blank" rel="noopener noreferrer" class="proj-link">
+            View on GitHub
+            <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- PROJECT 2: ALBERTA -->
+      <div class="proj-card fade">
+        <div class="proj-body">
+          <div class="proj-meta">
+            <span class="proj-num">Project 02</span>
+            <span class="proj-badge">ML · Time-Series · Tableau</span>
+          </div>
+          <div class="proj-title">Forecasting Alberta Electricity Load and Generation Mix</div>
+          <p class="proj-problem">Alberta electricity demand changes by season, hour, region, and weather conditions. This project combines a 4-page Tableau dashboard with a Python forecasting workflow to analyze demand trends, regional load, generation mix, surge-hour behavior, and model performance. The machine learning workflow compares baseline, ARIMA/SARIMAX, Prophet, XGBoost, and LSTM models on a 2024 holdout test set.</p>
+          <div class="proj-highlights">
+            <span class="proj-hl">70.16 MW MAE · 1.02% error</span>
+            <span class="proj-hl">20+ engineered features</span>
+            <span class="proj-hl">4-page Tableau dashboard</span>
+            <span class="proj-hl">XGBoost Direct best model</span>
+          </div>
+          <div class="proj-stack">
+            <span class="stack-chip">Python</span>
+            <span class="stack-chip">XGBoost</span>
+            <span class="stack-chip">LSTM</span>
+            <span class="stack-chip">Prophet</span>
+            <span class="stack-chip">ARIMA/SARIMAX</span>
+            <span class="stack-chip">Tableau</span>
+            <span class="stack-chip">scikit-learn</span>
+            <span class="stack-chip">TensorFlow</span>
+          </div>
+        </div>
+        <div class="proj-side">
+          <div>
+            <div class="proj-side-title">Best Model Performance</div>
+            <div class="proj-kpi">
+              <div class="kpi-val">1.02%</div>
+              <div class="kpi-lbl">MAE relative to avg load</div>
+            </div>
+            <div class="proj-kpi">
+              <div class="kpi-val">70.16 MW</div>
+              <div class="kpi-lbl">Mean Absolute Error</div>
+            </div>
+          </div>
+          <a href="https://github.com/Rajdeepgohil16/alberta-electricity-load-forecasting" target="_blank" rel="noopener noreferrer" class="proj-link">
+            View on GitHub
+            <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- PROJECT 3: HOSPITAL VBP -->
+      <div class="proj-card fade">
+        <div class="proj-body">
+          <div class="proj-meta">
+            <span class="proj-num">Project 03</span>
+            <span class="proj-badge">Healthcare Analytics · Statistics</span>
+          </div>
+          <div class="proj-title">Hospital VBP Financial Disparities</div>
+          <p class="proj-problem">This healthcare analytics project examines whether hospital financial performance in FY2021 is associated with Medicare Value-Based Purchasing adjustment factors, county-level social vulnerability, and geographic location. It combines CMS HCRIS cost report data, FY2021 VBP adjustment factors, CDC Social Vulnerability Index data, and county crosswalk data to run hypothesis testing and regression analysis on FY2021 short-term hospitals with valid Medicare VBP adjustment factors.</p>
+          <div class="proj-highlights">
+            <span class="proj-hl">10 hypothesis tests conducted</span>
+            <span class="proj-hl">Rural hospitals: lower margins (p=0.0038)</span>
+            <span class="proj-hl">OLS regression + HC3 robust SE</span>
+            <span class="proj-hl">4 merged public data sources</span>
+          </div>
+          <div class="proj-stack">
+            <span class="stack-chip">Python</span>
+            <span class="stack-chip">statsmodels</span>
+            <span class="stack-chip">Hypothesis Testing</span>
+            <span class="stack-chip">OLS Regression</span>
+            <span class="stack-chip">ANOVA</span>
+            <span class="stack-chip">pandas</span>
+            <span class="stack-chip">Matplotlib</span>
+          </div>
+        </div>
+        <div class="proj-side">
+          <div>
+            <div class="proj-side-title">Key Finding</div>
+            <div class="proj-kpi">
+              <div class="kpi-val">p=0.004</div>
+              <div class="kpi-lbl">Rural vs urban margin gap</div>
+            </div>
+            <div class="proj-kpi">
+              <div class="kpi-val">10</div>
+              <div class="kpi-lbl">Statistical tests conducted</div>
+            </div>
+          </div>
+          <a href="https://github.com/Rajdeepgohil16/hospital-vbp-financial-disparities" target="_blank" rel="noopener noreferrer" class="proj-link">
+            View on GitHub
+            <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- RESUME DOWNLOAD -->
+    <div class="resume-section fade">
+      <div class="resume-text">
+        <h3>Want the full picture?</h3>
+        <p>Download my resume for the complete work history, skills, and project details.</p>
+      </div>
+      <a href="Rajdeepsinh_Gohil_Data_Analyst_Resume.pdf" download class="btn btn-primary" style="white-space:nowrap">
+        Download Resume (PDF)
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- EXPERIENCE -->
+<section id="experience" class="section section-alt">
+  <div class="section-inner">
+    <div class="label fade">Work History</div>
+    <h2 class="fade">Experience</h2>
+    <div class="exp-card fade">
+      <div class="exp-header">
+        <div>
+          <div class="exp-title">Financial Analyst</div>
+          <div class="exp-company">AIS Business Solutions Pvt Ltd &nbsp;·&nbsp; US Clients: Banking, Auto Finance, Mortgage</div>
+        </div>
+        <div>
+          <div class="exp-dates">Jun 2023 – Jul 2024</div>
+          <div class="exp-loc">Vadodara, India</div>
+        </div>
+      </div>
+      <ul class="exp-bullets">
+        <li>Reviewed post-bankruptcy auto finance accounts for US financial services clients, including Chapter 7 and Chapter 13 discharge-related account updates using Ally Financial's loan servicing platform.</li>
+        <li>Reconciled loan payment histories, outstanding balances, reaffirmation details, and account status information using internal loan servicing systems and Microsoft Excel.</li>
+        <li>Identified account-level discrepancies in post-discharge balances, payment records, and documentation, escalating exceptions to senior reviewers for resolution.</li>
+        <li>Prepared structured account summaries and operational reports to support client-facing deliverables across auto finance, banking, and mortgage servicing workflows.</li>
+        <li>Worked in a regulated financial operations environment requiring accuracy, documentation control, and compliance with US bankruptcy and account servicing procedures.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- EDUCATION -->
+<section id="education" class="section">
+  <div class="section-inner">
+    <div class="label fade">Academic Background</div>
+    <h2 class="fade">Education</h2>
+    <div class="edu-grid">
+      <div class="edu-card featured fade">
+        <div class="edu-tag">Latest · 2026</div>
+        <div class="edu-deg">Graduate Certificate — Data Analytics for Business</div>
+        <div class="edu-school">St. Clair College · Windsor, ON, Canada</div>
+        <div class="edu-meta">Completed April 2026 &nbsp;·&nbsp; GPA: 3.94 / 4.0</div>
+        <div style="margin-top:1rem;font-size:0.82rem;color:var(--muted)">Machine learning · Statistical analysis · Python · SQL · BI dashboards · Data visualization · Business intelligence</div>
+      </div>
+      <div class="edu-card fade">
+        <div style="height:2rem"></div>
+        <div class="edu-deg">Bachelor of Science — Mathematics</div>
+        <div class="edu-school">Maharaja Sayajirao University of Baroda</div>
+        <div class="edu-meta">Vadodara, India &nbsp;·&nbsp; 2022</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner">
+    <div class="label">Get in Touch</div>
+    <h2 style="margin-bottom:1rem">Open to Data, BI &amp; Analytics roles<br>across Canada</h2>
+    <p class="contact-sub">I'm currently seeking Data Analyst, BI Analyst, Business Analyst, Reporting Analyst, Operations Analyst, Healthcare Data Analyst, and Junior ML Analyst roles. I'm open to opportunities across Canada and remote.</p>
+    <div class="contact-links">
+      <a href="mailto:rajdeepgohil000@gmail.com" class="c-link primary">✉ rajdeepgohil000@gmail.com</a>
+      <a href="https://www.linkedin.com/in/rajdeep-gohil/" target="_blank" rel="noopener noreferrer" class="c-link ghost">LinkedIn ↗</a>
+      <a href="https://github.com/Rajdeepgohil16" target="_blank" rel="noopener noreferrer" class="c-link ghost">GitHub ↗</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <p>Rajdeepsinh Gohil · Windsor, ON · Open to Canada-wide &amp; Remote roles</p>
+    <div style="display:flex;gap:1.5rem">
+      <a href="mailto:rajdeepgohil000@gmail.com">Email</a>
+      <a href="https://www.linkedin.com/in/rajdeep-gohil/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a href="https://github.com/Rajdeepgohil16" target="_blank" rel="noopener noreferrer">GitHub</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+const obs = new IntersectionObserver(entries => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('in'), i * 70);
+      obs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade').forEach(el => obs.observe(el));
+</script>
+
+</body>
+</html>
